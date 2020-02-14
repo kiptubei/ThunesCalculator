@@ -87,9 +87,9 @@ hint: you could pipe the output to html2text utility to remove xml tags
 
 This is the easiest and safest way to use Calculator3b,simply execute claculator.sh and pass it the right arguments
 
-./calculator.sh add 3 4
-./calulator.sh mul 4 5
-./calulator.sh fac 34
+* ./calculator.sh add 3 4
+* ./calulator.sh mul 4 5
+* ./calulator.sh fac 34
 
 for help options
 
@@ -101,13 +101,13 @@ TOMCAT_PATH="http://localhost:8080"
 
 If you have a lot of data to calculate and save you can use calculator.sh
 
-curl $TOMCAT_PATH/$APP_PATH/$FAC | cut -c 56- >>  x3cut.xml 
-curl $TOMCAT_PATH/$APP_PATH/$MUL | cut -c 56- >>  x3cut.xml
-curl $TOMCAT_PATH/$APP_PATH/$ADD | cut -c 56- >>  x3cut.xml 
+* curl $TOMCAT_PATH/$APP_PATH/$FAC | cut -c 56- >>  x3cut.xml 
+* curl $TOMCAT_PATH/$APP_PATH/$MUL | cut -c 56- >>  x3cut.xml
+* curl $TOMCAT_PATH/$APP_PATH/$ADD | cut -c 56- >>  x3cut.xml 
 
 you can add as many computations as you like.
 
-./calculator.sh
+* ./calculator.sh
 
 it will generate a csv file for you in the project path called data.csv with all you data
 
@@ -147,7 +147,5 @@ Code coverage for this release is about 65%
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+
 
