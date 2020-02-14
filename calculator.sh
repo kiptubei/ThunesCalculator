@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 #================================================================
-# HEADER : CalculatorXML.sh
+# HEADER : calculator.sh
 #================================================================
 #% SYNOPSIS
-#+    ${SCRIPT_NAME}
+#+    ${SCRIPT_NAME} <operation> <value1> <value2>
 #+
 SCRIPT_NAME=calculator.sh
 #+
@@ -18,7 +18,7 @@ SCRIPT_NAME=calculator.sh
 #%
 #%
 #% EXAMPLES
-#%    ${SCRIPT_NAME}
+#%    ${SCRIPT_NAME} 
 #%
 #================================================================
 #- IMPLEMENTATION
@@ -61,21 +61,66 @@ APP_PATH="Calculator3/start/calculate"
 # Modify these according to the calculation you wish to perform
 #
 
-VALUE1=0
-VALUE2=1
+VALUE1=$1
+VALUE2=$2
+VALUE3=$3
 
 # Actions
 # -----------------------------------
 # All actions that the script can perform
 # 
 
-ADD="add/$VALUE1/$VALUE2"
-SUB="sub/$VALUE1/$VALUE2"
-DIV="div/$VALUE1/$VALUE2"
-MUL="mul/$VALUE1/$VALUE2"
-FAC="fac/$VALUE1"
+if [ "$1" == "-h" ]; then
+  echo " script to add subtract multiply divide and factorial e.g Usage: "$SCRIPT_NAME" [add/ADD/a/A 9 0] [sub/SUB/s/S 5 1] [mul/m/MUL 2 6] [div/DIV/d/D 4 2] [fac/FAC/f/F 23]"
+  exit 0
+fi
+
+# Actions
+# -----------------------------------
+# All actions that the script can perform
+# 
+
+ case $VALUE1 in
+     add|ADD|[aA])
+        VALUE1=add
+	CALC="$VALUE1/$VALUE2/$VALUE3"
+	echo $CALC
+ 	;;
+
+     sub|SUB|[sS])
+	VALUE1=sub
+	CALC="$VALUE1/$VALUE2/$VALUE3"
+        ;;
+     mul|MUL|[mM])
+  
+        VALUE1=mul
+	CALC="$VALUE1/$VALUE2/$VALUE3"
+        ;;
+
+     div|DIV|[dD])
+  	
+	VALUE1=div
+	CALC="$VALUE1/$VALUE2/$VALUE3"
+        ;;
+     fac|FAC|[fF])
+  
+	VALUE1=fac
+	CALC="$VALUE1/$VALUE2"
+        ;;
+     *)
+ echo "Invalid input... must be <add 2 3> or <fac 6> use add,sub,div,fac"
+ ;;
+ esac
 
 
+
+ADD="$VALUE1/$VALUE2/$VALUE3"
+SUB="$VALUE1/$VALUE2/$VALUE3"
+DIV="$VALUE1/$VALUE2/$VALUE3"
+MUL="$VALUE1/$VALUE2/$VALUE3"
+FAC="$VALUE1/$VALUE2"
+
+echo $ADD
 
 # curl calculate
 # -----------------------------------
@@ -88,15 +133,17 @@ FAC="fac/$VALUE1"
 # e.g
 # <?xml version="1.0" encoding="UTF-8" standalone="yes"?><result><description>add</description><inputOne>4</inputOne><inputTwo>3<inputTwo><output>7.0</output></result>
 #
-# strips the xml tags and writes them to file x3cut.xml
+# it strips the xml tags and writes them to file x3cut.xml
 #
-#  #NOTE: UNCOMMENT AND MODIFY IF YOU WISH TO USE THIS AS YOU PRIMARY INTERFACE
-
- 
 #uncomment this line if you want a new empty x3cut.xml and data3.xml file
 #cat xempty.xml > x3cut.xml
 
-curl $TOMCAT_PATH/$APP_PATH/$FAC | cut -c 56- >>  x3cut.xml 
+
+curl $TOMCAT_PATH/$APP_PATH/$CALC | cut -c 56- >>  x3cut.xml 
+
+#NOTE: UNCOMMENT AND MODIFY IF YOU WISH TO USE THIS FOR BULK CALCULATIONS
+#-------------------------------------------------------------------------------------------------------
+#curl $TOMCAT_PATH/$APP_PATH/$FAC | cut -c 56- >>  x3cut.xml 
 #curl $TOMCAT_PATH/$APP_PATH/$MUL | cut -c 56- >>  x3cut.xml
 #curl $TOMCAT_PATH/$APP_PATH/$ADD | cut -c 56- >>  x3cut.xml 
 
@@ -119,4 +166,6 @@ echo '</host>' >> data3.xml
 
 echo  $scriptPath
 java -jar $scriptPath/CalculatorXml.jar
+
+cat x3.csv
 
