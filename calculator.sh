@@ -108,7 +108,8 @@ fi
 	CALC="$VALUE1/$VALUE2"
         ;;
      *)
- echo "Invalid input... must be <add 2 3> or <fac 6> use add,sub,div,fac"
+ echo "Invalid input must be..."$SCRIPT_NAME" [add 2 3] or [fac 6] use add,sub,div,mul,fac"
+ exit 0
  ;;
  esac
 
@@ -119,8 +120,6 @@ SUB="$VALUE1/$VALUE2/$VALUE3"
 DIV="$VALUE1/$VALUE2/$VALUE3"
 MUL="$VALUE1/$VALUE2/$VALUE3"
 FAC="$VALUE1/$VALUE2"
-
-echo $ADD
 
 # curl calculate
 # -----------------------------------
@@ -141,8 +140,16 @@ echo $ADD
 
 curl $TOMCAT_PATH/$APP_PATH/$CALC | cut -c 56- >>  x3cut.xml 
 
-#NOTE: UNCOMMENT AND MODIFY IF YOU WISH TO USE THIS FOR BULK CALCULATIONS
+#NOTE: UNCOMMENT AND MODIFY IF YOU WISH TO USE THIS FOR BULK CALCULATIONS AND COMMENT THE LINE ABOVE
 #-------------------------------------------------------------------------------------------------------
+#ADD="add/$VALUE2/$VALUE2"
+#SUB="sub/$VALUE2/$VALUE3"
+#DIV="div/$VALUE2/$VALUE3"
+#MUL="mul/$VALUE2/$VALUE3"
+#FAC="fac/$VALUE2"
+#
+#
+#
 #curl $TOMCAT_PATH/$APP_PATH/$FAC | cut -c 56- >>  x3cut.xml 
 #curl $TOMCAT_PATH/$APP_PATH/$MUL | cut -c 56- >>  x3cut.xml
 #curl $TOMCAT_PATH/$APP_PATH/$ADD | cut -c 56- >>  x3cut.xml 
