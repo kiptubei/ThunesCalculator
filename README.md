@@ -24,28 +24,29 @@ These instructions will get you a copy of the project up and running on your loc
 2. Import project into Eclipse to view and run code from the IDE
 3. Modify calculator.sh script at <TOMCAT_PATH="http://localhost:8080">, change path to match youtcr tomcat installation
 4. To run application without eclipse ,deploy the war file Calculator3.war to your tomcat server (or web server of your choice though this has not been tested on any other installation apart from Apache Tomcat 9.0)
-5. From terminal cd to the project folder ,test your application by running calculator.sh  e.g ./calculator.sh it should generate a file
-in the format <x2_{$SYSTEM_TIME}.csv> 
+5. From terminal cd to the project folder ,test your application by running calculator.sh  
+e.g ./calculator.sh add 3 4
+it should generate a file in the format <x2_{$SYSTEM_TIME}.csv> 
 
 6. To access source code for CalculatorXML checkout
 	git clone https://github.com/kiptubei/Calculator3.git
  	git pull origin master
 
 
-### Prerequisites
+## Prerequisites
 
-Java 8+ JRE/JDK
-Google Chrome /Mozilla Firefox
-Bash
-*For developers
-Eclipse 2019-03
-Apache Tomcat v9.0
-Jersey 2.30
-Gradle 6.2-rc-2
-JUnit 5
+* Java 8+ JRE/JDK
+* Google Chrome /Mozilla Firefox
+* Bash
+For developers
+* Eclipse 2019-03
+* Apache Tomcat v9.0
+* Jersey 2.30
+* Gradle 6.2-rc-2
+* JUnit 5
 
-#### Running Calculator3
-Calculator 3 takes only 4 commands:
+## Running Calculator3
+Calculator 3 takes only 5 commands:
  "add","sub","mul","div","fac" for factorial 
 
 Each of which in-turn takes only two parameters value1 and value2 (Factorial only takes one)
@@ -56,7 +57,7 @@ Once deployed succesfully  to your web server of choice  (Apcahe ,JBoss, Glassfi
 2. CLI
 3. calculator.sh script  (recommended)
 
-	Web Browser
+### Web Browser
 To run from web browser simply enter the following uri
 
 Addition
@@ -74,7 +75,7 @@ Divide
 Factorial
 <http://localhost:8080/Calculator3/start/calculate/fac/35>
 
-	CLI
+### CLI
 
 To use the terminal or shell we use the utility curl to accept uri's
 
@@ -82,32 +83,31 @@ To use the terminal or shell we use the utility curl to accept uri's
  
 hint: you could pipe the output to html2text utility to remove xml tags
 
-	calculator.sh
+### calculator.sh
 
-This is the easiest and safest way to use Calculator3
+This is the easiest and safest way to use Calculator3b,simply execute claculator.sh and pass it the right arguments
 
-simply execute claculator.sh and pass it the right arguments
-e.g
 ./calculator.sh add 3 4
 ./calulator.sh mul 4 5
 ./calulator.sh fac 34
 
 for help options
+
 ./calculator.sh -h
 
+To use first modify the path to the tomcat server to much your installation:
+
+TOMCAT_PATH="http://localhost:8080"
 
 If you have a lot of data to calculate and save you can use calculator.sh
 
-modify these section as needed,
-TOMCAT_PATH="http://localhost:8080"
-
 curl $TOMCAT_PATH/$APP_PATH/$FAC | cut -c 56- >>  x3cut.xml 
-#curl $TOMCAT_PATH/$APP_PATH/$MUL | cut -c 56- >>  x3cut.xml
-#curl $TOMCAT_PATH/$APP_PATH/$ADD | cut -c 56- >>  x3cut.xml 
+curl $TOMCAT_PATH/$APP_PATH/$MUL | cut -c 56- >>  x3cut.xml
+curl $TOMCAT_PATH/$APP_PATH/$ADD | cut -c 56- >>  x3cut.xml 
 
+you can add as many computations as you like.
 
-you can add as many computations as you like 
-execute it ./calculator.sh
+./calculator.sh
 
 it will generate a csv file for you in the project path called data.csv with all you data
 
@@ -131,15 +131,15 @@ Code coverage for this release is about 65%
 
 * [Gradle 6.2-rc-2](https://gradle.org/) - Dependency Management
 * [Jersey 2.30](https://eclipse-ee4j.github.io/jersey/) - JAX-RS implementation for json and xml
-* [ Apache Tomcat v9.0 ](http://tomcat.apache.org/index.html)
-* [ Eclipse 2019-03 4.11.0](https://www.eclipse.org/) - IDE
-* [OpenJDK version 1.8.0_242]
-* [ Ubuntu 18.04 LTS -64 bit]
+* [Apache Tomcat v9.0 ](http://tomcat.apache.org/index.html) -Web Server
+* [Eclipse 2019-03 4.11.0](https://www.eclipse.org/) - IDE
+* [OpenJDK version 1.8.0_242](https://devdocs.io/openjdk~8/) -Programming Language
+* [Ubuntu 18.04 LTS -64 bit](https://ubuntu.com/) - Operating System
 
 
 ## Authors
 
-* **Mark James Kiptubei** - *Initial work* - [PurpleBooth](https://github.com/Kiptubei)
+* **Mark James Kiptubei** - [kiptubei](https://github.com/Kiptubei)
 
 
 ## License
