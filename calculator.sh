@@ -51,7 +51,7 @@ SCRIPT_NAME=calculator.sh
 # Paths
 # -----------------------------------
 
-scriptPath="${HOME}/Calculator3"
+scriptPath="../Calculator3"
 TOMCAT_PATH="http://localhost:8080"
 APP_PATH="Calculator3/start/calculate"
 
